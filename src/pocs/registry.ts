@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import KpiDashboardDemo from "./kpi-dashboard/Demo";
+import ServiceCatalogDemo from "./service-catalog/Demo";
 
 export type PocDefinition = {
   slug: string;
@@ -11,6 +12,14 @@ export type PocDefinition = {
 
 export const pocs: PocDefinition[] = [
   {
+    slug: "service-catalog",
+    title: "Service Catalog",
+    description:
+      "A searchable service ownership catalog with mock teams, health, runbooks, dashboards, and dependencies.",
+    tags: ["Catalog", "Ownership", "Runbooks", "Services"],
+    Demo: ServiceCatalogDemo,
+  },
+  {
     slug: "kpi-dashboard",
     title: "KPI Dashboard",
     description:
@@ -20,7 +29,7 @@ export const pocs: PocDefinition[] = [
   },
 ];
 
-export const currentFocusSlug = "kpi-dashboard";
+export const currentFocusSlug = "service-catalog";
 
 export const currentFocusPoc =
   pocs.find((poc) => poc.slug === currentFocusSlug) ?? pocs[0];
