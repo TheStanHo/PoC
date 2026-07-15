@@ -27,6 +27,8 @@ src/
     example-poc/
       Demo.tsx
       README.md
+      components/
+      pages/
       assets/
   styles/
     globals.css
@@ -35,8 +37,12 @@ src/
 Guidelines:
 
 - Keep each PoC self-contained in `src/pocs/<poc-name>/`.
+- Treat `Demo.tsx` as the PoC entry point, not necessarily the only page.
+- If a PoC needs multiple pages, keep its internal `pages/`, `components/`, and data files inside `src/pocs/<poc-name>/`.
 - Register visible PoCs in `src/pocs/registry.ts`.
 - Prefer URLs like `/pocs/<poc-name>`.
+- For multi-page PoCs, keep nested URLs under `/pocs/<poc-name>/...`, such as `/pocs/kpi-dashboard/services`.
+- Let the global app route identify the PoC; let the PoC handle its own internal sub-pages.
 - Keep shared UI in `src/components/`.
 - Keep page-level routing/layout in `src/pages/`.
 - Use `public/CNAME` with `poc.stanho.dev` for the custom GitHub Pages domain.

@@ -22,6 +22,8 @@ src/
     example-poc/
       Demo.tsx
       README.md
+      components/
+      pages/
       assets/
   styles/
     globals.css
@@ -30,9 +32,13 @@ src/
 ## Conventions
 
 - Keep each PoC in `src/pocs/<poc-name>/`.
-- Each PoC should expose a main `Demo.tsx`.
+- Each PoC should expose a main `Demo.tsx` as its entry point.
+- A PoC can have multiple internal pages when useful.
+- Keep PoC-specific pages, components, data, and types inside that PoC folder.
 - Add PoC metadata and routing information through `src/pocs/registry.ts`.
 - Use URLs in the form `/pocs/<poc-name>`.
+- For multi-page PoCs, use nested URLs under the PoC, such as `/pocs/kpi-dashboard/services`.
+- Let the global app route identify the PoC, then let the PoC handle its own internal sub-pages.
 - Keep reusable UI in `src/components/`.
 - Keep route/page-level components in `src/pages/`.
 - Keep global styling in `src/styles/globals.css`.
