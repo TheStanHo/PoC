@@ -1,0 +1,19 @@
+---
+description: Prevent confidential information from being added to PoCs
+alwaysApply: true
+---
+
+# No Confidential Information
+
+This repository is intended to be published to GitHub and served from GitHub Pages. Treat all committed files as public.
+
+When building PoCs:
+
+- Use mock, anonymized, or synthetic data only.
+- Do not add real customer names, emails, tenant IDs, account IDs, tokens, API keys, passwords, certificates, private URLs, internal hostnames, or production incident details.
+- Do not commit `.env` files, credentials, exported logs, private screenshots, or downloaded reports.
+- If sample identifiers are needed, use obvious fake values like `team-alpha`, `service-demo`, `example.com`, or `00000000-0000-0000-0000-000000000000`.
+- Keep secrets in local environment variables, GitHub repository secrets, or the target platform secret store, never in source files.
+- Before adding a new PoC, check that fixtures, screenshots, README examples, and comments do not reveal internal or confidential information.
+
+If a PoC needs realistic-looking operational data, create representative mock data instead of copying real monitoring, incident, or service data.

@@ -1,0 +1,48 @@
+# Agent Instructions
+
+This repository is a proof-of-concept hub that will be published to GitHub Pages at `poc.stanho.dev`.
+
+Build it as one static site containing many PoCs, not as separate apps per PoC. Prefer Vite + React + TypeScript unless the project is intentionally changed later.
+
+## Project Layout
+
+```text
+public/
+  CNAME
+  assets/
+src/
+  components/
+    Layout.tsx
+    PocCard.tsx
+  pages/
+    Home.tsx
+    PocPage.tsx
+  pocs/
+    registry.ts
+    example-poc/
+      Demo.tsx
+      README.md
+      assets/
+  styles/
+    globals.css
+```
+
+## Conventions
+
+- Keep each PoC in `src/pocs/<poc-name>/`.
+- Each PoC should expose a main `Demo.tsx`.
+- Add PoC metadata and routing information through `src/pocs/registry.ts`.
+- Use URLs in the form `/pocs/<poc-name>`.
+- Keep reusable UI in `src/components/`.
+- Keep route/page-level components in `src/pages/`.
+- Keep global styling in `src/styles/globals.css`.
+- Keep static public files in `public/`.
+- Use `public/CNAME` with the value `poc.stanho.dev` for GitHub Pages.
+
+## Confidentiality
+
+- Treat all committed files as public because this repo is intended for GitHub Pages.
+- Use mock, anonymized, or synthetic data for PoCs.
+- Do not commit secrets, credentials, `.env` files, real customer data, internal hostnames, private URLs, exported logs, private screenshots, or production incident details.
+
+When adding new work, keep it small, easy to understand, and beginner-friendly.

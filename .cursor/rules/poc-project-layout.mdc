@@ -1,0 +1,43 @@
+---
+description: Project layout and conventions for the PoC GitHub Pages site
+alwaysApply: true
+---
+
+# PoC Project Layout
+
+This repository is a proof-of-concept hub published with GitHub Pages at `poc.stanho.dev`.
+
+Use a single static Vite + React + TypeScript app that hosts many small PoCs.
+
+Recommended structure:
+
+```text
+public/
+  CNAME
+  assets/
+src/
+  components/
+    Layout.tsx
+    PocCard.tsx
+  pages/
+    Home.tsx
+    PocPage.tsx
+  pocs/
+    registry.ts
+    example-poc/
+      Demo.tsx
+      README.md
+      assets/
+  styles/
+    globals.css
+```
+
+Guidelines:
+
+- Keep each PoC self-contained in `src/pocs/<poc-name>/`.
+- Register visible PoCs in `src/pocs/registry.ts`.
+- Prefer URLs like `/pocs/<poc-name>`.
+- Keep shared UI in `src/components/`.
+- Keep page-level routing/layout in `src/pages/`.
+- Use `public/CNAME` with `poc.stanho.dev` for the custom GitHub Pages domain.
+- Avoid turning each PoC into a separate app unless there is a clear reason.
