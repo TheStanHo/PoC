@@ -27,7 +27,7 @@ function SummaryCard({
   detail: string;
 }) {
   return (
-    <article className="summary-card">
+    <article className="kpi-metric-card">
       <span>{label}</span>
       <strong>{value}</strong>
       <p>{detail}</p>
@@ -35,7 +35,7 @@ function SummaryCard({
   );
 }
 
-function ServiceCard({
+function ServiceRow({
   service,
   period,
 }: {
@@ -46,53 +46,25 @@ function ServiceCard({
   const isSloBreached = snapshot.availability < snapshot.sloTarget;
 
   return (
-    <article className="service-card">
-      <div className="service-card__header">
-        <div>
-          <span className="eyebrow">{service.platform}</span>
-          <h3>{service.name}</h3>
-        </div>
-        <span className={`status-pill status-pill--${service.status}`}>
-          {service.status}
-        </span>
+    <article className="kpi-service-row">
+      <div className="kpi-service-row__name">
+        <strong>{service.name}</strong>
+        <span>{service.platform}</span>
       </div>
-
-      <p>{service.summary}</p>
-
-      <dl className="metric-grid">
-        <div>
-          <dt>Availability</dt>
-          <dd className={isSloBreached ? "metric-danger" : undefined}>
-            {formatPercent(snapshot.availability)}
-          </dd>
-        </div>
-        <div>
-          <dt>SLO Target</dt>
-          <dd>{formatPercent(snapshot.sloTarget)}</dd>
-        </div>
-        <div>
-          <dt>Error Budget</dt>
-          <dd>{snapshot.errorBudgetRemaining}%</dd>
-        </div>
-        <div>
-          <dt>Incidents</dt>
-          <dd>{snapshot.incidents}</dd>
-        </div>
-        <div>
-          <dt>Open Incidents</dt>
-          <dd>{snapshot.openIncidents}</dd>
-        </div>
-        <div>
-          <dt>P95 Latency</dt>
-          <dd>{snapshot.latencyP95Ms}ms</dd>
-        </div>
-      </dl>
-
-      <div className="check-summary">
+      <span className={`status-pill status-pill--${service.status}`}>
+        {service.status}
+      </span>
+      <strong className={isSloBreached ? "kpi-danger" : undefined}>
+        {formatPercent(snapshot.availability)}
+      </strong>
+      <span>{formatPercent(snapshot.sloTarget)}</span>
+      <span>{snapshot.errorBudgetRemaining}%</span>
+      <span>{snapshot.incidents}</span>
+      <span>{snapshot.latencyP95Ms}ms</span>
+      <span className="kpi-check-summary">
         {snapshot.successfulChecks.toLocaleString()} of{" "}
-        {snapshot.totalChecks.toLocaleString()} health checks passed this{" "}
-        {period === "weekly" ? "week" : "month"}.
-      </div>
+        {snapshot.totalChecks.toLocaleString()}
+      </span>
     </article>
   );
 }
@@ -132,8 +104,8 @@ function TrendPanel({
   }, [period, servicesForTeam]);
 
   return (
-    <section className="panel">
-      <div className="section-heading">
+    <section className="kpi-panel kpi-trend-panel">
+      <div className="kpi-section-heading">
         <div>
           <span className="eyebrow">Trend</span>
           <h2>{period === "weekly" ? "Weekly" : "Monthly"} performance</h2>
@@ -143,11 +115,11 @@ function TrendPanel({
         </p>
       </div>
 
-      <div className="trend-list">
+      <div className="kpi-trend-list">
         {trend.map((point) => (
-          <div className="trend-row" key={point.label}>
+          <div className="kpi-trend-row" key={point.label}>
             <span>{point.label}</span>
-            <div className="trend-bar" aria-hidden="true">
+            <div className="kpi-trend-bar" aria-hidden="true">
               <span style={{ width: getTrendWidth(point.availability) }} />
             </div>
             <strong>{formatPercent(point.availability)}</strong>
@@ -205,17 +177,27 @@ export default function KpiDashboardDemo() {
       : teams.find((team) => team.id === selectedTeam);
 
   return (
-    <div className="kpi-dashboard">
-      <section className="hero hero--dashboard">
-        <span className="eyebrow">KPI Dashboard PoC</span>
-        <h1>Platform and service reliability KPIs</h1>
-        <p>
-          A mock dashboard for teams to review SLOs, availability, incidents,
-          and service performance by week or month.
-        </p>
+    <div className="kpi-poc">
+      <section className="kpi-hero">
+        <div>
+          <a className="kpi-hub-link" href="/">
+            PoC hub
+          </a>
+          <span className="eyebrow">KPI Dashboard PoC</span>
+          <h1>Reliability command centre</h1>
+          <p>
+            A focused operations view for checking SLOs, availability, error
+            budget, incidents, and service performance by week or month.
+          </p>
+        </div>
+        <aside className="kpi-hero__status">
+          <span>Operational view</span>
+          <strong>{formatPercent(summary.averageAvailability)}</strong>
+          <p>Average availability for the selected scope.</p>
+        </aside>
       </section>
 
-      <section className="controls-panel" aria-label="Dashboard filters">
+      <section className="kpi-control-bar" aria-label="Dashboard filters">
         <label>
           Team
           <select
@@ -231,7 +213,7 @@ export default function KpiDashboardDemo() {
           </select>
         </label>
 
-        <div className="period-toggle" aria-label="KPI period">
+        <div className="kpi-period-toggle" aria-label="KPI period">
           <button
             className={period === "weekly" ? "active" : undefined}
             type="button"
@@ -250,13 +232,13 @@ export default function KpiDashboardDemo() {
       </section>
 
       {selectedTeamDetails ? (
-        <section className="team-note">
+        <section className="kpi-team-note">
           <strong>{selectedTeamDetails.name}</strong>
           <span>{selectedTeamDetails.description}</span>
         </section>
       ) : null}
 
-      <section className="summary-grid" aria-label="KPI summary">
+      <section className="kpi-metric-grid" aria-label="KPI summary">
         <SummaryCard
           label="Average Availability"
           value={formatPercent(summary.averageAvailability)}
@@ -281,21 +263,65 @@ export default function KpiDashboardDemo() {
 
       <TrendPanel servicesForTeam={servicesForTeam} period={period} />
 
-      <section className="panel">
-        <div className="section-heading">
+      <section className="kpi-analysis-grid">
+        <div className="kpi-panel kpi-incident-panel">
+          <span className="eyebrow">Attention queue</span>
+          <h2>Incidents and SLO risk</h2>
+          <div className="kpi-attention-list">
+            <div>
+              <strong>{summary.openIncidents}</strong>
+              <span>open incidents</span>
+            </div>
+            <div>
+              <strong>{summary.breachedSlos}</strong>
+              <span>SLO breaches</span>
+            </div>
+            <div>
+              <strong>{summary.warningServices}</strong>
+              <span>warning services</span>
+            </div>
+            <div>
+              <strong>{summary.breachedServices}</strong>
+              <span>breached services</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="kpi-panel kpi-shift-panel">
+          <span className="eyebrow">Shift note</span>
+          <h2>What to check first</h2>
+          <p>
+            Start with services below SLO target, then review open incidents and
+            error budget burn before approving further changes.
+          </p>
+        </div>
+      </section>
+
+      <section className="kpi-panel">
+        <div className="kpi-section-heading">
           <div>
             <span className="eyebrow">Services</span>
-            <h2>Service KPI cards</h2>
+            <h2>Service health board</h2>
           </div>
           <p>
-            Each card compares the selected {period} result against the service
+            Each row compares the selected {period} result against the service
             target.
           </p>
         </div>
 
-        <div className="service-grid">
+        <div className="kpi-service-board" role="table" aria-label="Service health board">
+          <div className="kpi-service-board__header" role="row">
+            <span>Service</span>
+            <span>Status</span>
+            <span>Avail.</span>
+            <span>SLO</span>
+            <span>Budget</span>
+            <span>Inc.</span>
+            <span>P95</span>
+            <span>Checks</span>
+          </div>
           {servicesForTeam.map((service) => (
-            <ServiceCard key={service.id} period={period} service={service} />
+            <ServiceRow key={service.id} period={period} service={service} />
           ))}
         </div>
       </section>

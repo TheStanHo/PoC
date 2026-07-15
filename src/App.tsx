@@ -67,7 +67,11 @@ export default function App() {
   }
 
   return (
-    <Layout currentPath={currentPath} onNavigate={navigate}>
+    <Layout
+      currentPath={currentPath}
+      onNavigate={navigate}
+      presentation={activePoc?.presentation}
+    >
       {content}
     </Layout>
   );

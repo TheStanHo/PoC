@@ -4,14 +4,26 @@ type LayoutProps = {
   children: ReactNode;
   currentPath: string;
   onNavigate: (path: string) => void;
+  presentation?: "standard" | "immersive";
 };
 
-export function Layout({ children, currentPath, onNavigate }: LayoutProps) {
+export function Layout({
+  children,
+  currentPath,
+  onNavigate,
+  presentation = "standard",
+}: LayoutProps) {
   const isHome = currentPath === "/";
+  const isImmersive = !isHome && presentation === "immersive";
 
   return (
-    <div className="site-shell">
-      <header className="site-header">
+    <div
+      className={`site-shell ${isHome ? "site-shell--home" : "site-shell--poc"} ${
+        isImmersive ? "site-shell--immersive" : ""
+      }`}
+    >
+      {!isImmersive ? (
+        <header className="site-header">
         <a
           className="brand"
           href="/"
@@ -37,8 +49,11 @@ export function Layout({ children, currentPath, onNavigate }: LayoutProps) {
           </a>
         </nav>
       </header>
+      ) : null}
 
-      <main>{children}</main>
+      <main className={isHome ? "site-main site-main--home" : "site-main site-main--poc"}>
+        {children}
+      </main>
     </div>
   );
 }
