@@ -1,13 +1,14 @@
 import { PocCard } from "../components/PocCard";
-import { pocs } from "../pocs/registry";
+import { currentFocusPoc, pocs } from "../pocs/registry";
 
 type HomeProps = {
   onNavigate: (path: string) => void;
 };
 
 export function Home({ onNavigate }: HomeProps) {
-  const currentFocus = pocs[0];
-  const currentFocusPath = currentFocus ? `/pocs/${currentFocus.slug}` : "/";
+  const currentFocusPath = currentFocusPoc
+    ? `/pocs/${currentFocusPoc.slug}`
+    : "/";
 
   return (
     <>
@@ -28,17 +29,17 @@ export function Home({ onNavigate }: HomeProps) {
                 onNavigate(currentFocusPath);
               }}
             >
-              {currentFocus ? `View ${currentFocus.title}` : "View PoCs"}
+              {currentFocusPoc ? `View ${currentFocusPoc.title}` : "View PoCs"}
             </a>
             <span>Built for quick experiments, clean demos, and mock data.</span>
           </div>
         </div>
 
-        {currentFocus ? (
+        {currentFocusPoc ? (
           <aside className="home-hero__panel" aria-label="Current PoC focus">
             <span className="eyebrow">Current focus</span>
-            <strong>{currentFocus.title}</strong>
-            <p>{currentFocus.description}</p>
+            <strong>{currentFocusPoc.title}</strong>
+            <p>{currentFocusPoc.description}</p>
           </aside>
         ) : null}
       </section>

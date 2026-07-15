@@ -19,3 +19,8 @@ export const pocs: PocDefinition[] = [
     Demo: KpiDashboardDemo,
   },
 ];
+
+export const currentFocusSlug = "kpi-dashboard";
+
+export const currentFocusPoc =
+  pocs.find((poc) => poc.slug === currentFocusSlug) ?? pocs[0];

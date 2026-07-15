@@ -40,6 +40,8 @@ Guidelines:
 - Treat `Demo.tsx` as the PoC entry point, not necessarily the only page.
 - If a PoC needs multiple pages, keep its internal `pages/`, `components/`, and data files inside `src/pocs/<poc-name>/`.
 - Register visible PoCs in `src/pocs/registry.ts`.
+- Use `currentFocusSlug` in `src/pocs/registry.ts` to choose the homepage featured/current PoC.
+- When adding a new PoC that should be featured, update `currentFocusSlug` to that PoC's slug; do not rely on `pocs[0]` ordering.
 - Prefer URLs like `/pocs/<poc-name>`.
 - For multi-page PoCs, keep nested URLs under `/pocs/<poc-name>/...`, such as `/pocs/kpi-dashboard/services`.
 - Let the global app route identify the PoC; let the PoC handle its own internal sub-pages.

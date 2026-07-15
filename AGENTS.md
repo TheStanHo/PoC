@@ -36,6 +36,8 @@ src/
 - A PoC can have multiple internal pages when useful.
 - Keep PoC-specific pages, components, data, and types inside that PoC folder.
 - Add PoC metadata and routing information through `src/pocs/registry.ts`.
+- Use `currentFocusSlug` in `src/pocs/registry.ts` to choose the homepage featured/current PoC.
+- When adding a new PoC that should be featured, update `currentFocusSlug` to that PoC's slug; do not rely on `pocs[0]` ordering.
 - Use URLs in the form `/pocs/<poc-name>`.
 - For multi-page PoCs, use nested URLs under the PoC, such as `/pocs/kpi-dashboard/services`.
 - Let the global app route identify the PoC, then let the PoC handle its own internal sub-pages.
