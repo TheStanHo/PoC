@@ -1,8 +1,14 @@
 # Monitor-Me PoC
 
-A web proof of concept inspired by the **Monitor-Me** Android dissertation app, which studied phone usage over one week by collecting unlock counts and screen-on duration.
+An interactive phone mockup inspired by the **Monitor-Me** Android dissertation app.
 
-This demo is not a rebuild of the Android app. It shows how the study signals could be reviewed in a lightweight researcher dashboard using synthetic participants.
+The page explains what the original study application did, while the phone UI lets you click through the same participant flow:
+
+1. Consent
+2. Questionnaire
+3. Usage permission
+4. Monitoring
+5. Finish study
 
 ## Inspired by the original app
 
@@ -19,12 +25,9 @@ It did not collect message content, photos, or personal account data.
 
 ## Current scope
 
-- Study flow overview matching the original consent → monitor → finish path
-- Synthetic participant selector with anonymised IDs
-- Weekly unlock and screen-on charts
-- Sample unlock timeline and screen sessions
-- Service heartbeat strip showing when monitoring stayed alive
+- Clickable phone-screen walkthrough of the main app screens
+- Side panel with application details and collected signals
+- Synthetic live unlock / screen-on counters while monitoring is active
+- Restart path so the demo can be tried again
 
-## Imagery
-
-Hero photography is from Unsplash (phone / everyday usage atmosphere).
+All participant data in this PoC is synthetic.
