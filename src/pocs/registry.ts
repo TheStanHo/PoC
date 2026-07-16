@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import DesignerPortfolioDemo from "./designer-portfolio/Demo";
 import KpiDashboardDemo from "./kpi-dashboard/Demo";
+import MonitorMeDemo from "./monitor-me/Demo";
 import PetitCrumbDemo from "./petit-crumb/Demo";
 import SaltdriftHouseDemo from "./saltdrift-house/Demo";
 import ServiceCatalogDemo from "./service-catalog/Demo";
@@ -15,6 +16,15 @@ export type PocDefinition = {
 };
 
 export const pocs: PocDefinition[] = [
+  {
+    slug: "monitor-me",
+    title: "Monitor-Me",
+    description:
+      "A researcher dashboard PoC inspired by the Android dissertation app that tracked phone unlocks and screen-on time.",
+    tags: ["Research", "Android", "Usage", "Dashboard"],
+    presentation: "immersive",
+    Demo: MonitorMeDemo,
+  },
   {
     slug: "saltdrift-house",
     title: "Saltdrift House",
@@ -62,7 +72,7 @@ export const pocs: PocDefinition[] = [
   },
 ];
 
-export const currentFocusSlug = "saltdrift-house";
+export const currentFocusSlug = "monitor-me";
 
 export const currentFocusPoc =
   pocs.find((poc) => poc.slug === currentFocusSlug) ?? pocs[0];
