@@ -52,6 +52,14 @@ src/
 - Keep static public files in `public/`.
 - Use `public/CNAME` with the value `poc.stanho.dev` for GitHub Pages.
 
+## Imagery
+
+- When a PoC needs photographs or illustrative imagery, get them from [Unsplash](https://unsplash.com/).
+- Use free Unsplash photos only (not Unsplash+ / paid assets).
+- Free Unsplash photos are covered by the [Unsplash License](https://unsplash.com/license), so they can be used in this public GitHub Pages hub without a paid license.
+- Prefer Unsplash image URLs such as `https://images.unsplash.com/photo-...?auto=format&fit=crop&w=1200&q=80`.
+- Do not use private screenshots, client photos, or random copyrighted images from elsewhere on the web.
+
 ## Confidentiality
 
 - Treat all committed files as public because this repo is intended for GitHub Pages.
