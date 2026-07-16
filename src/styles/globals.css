@@ -2853,3 +2853,517 @@ button {
     transition: none;
   }
 }
+
+/* --- Saltdrift House --- */
+
+.saltdrift {
+  --sd-ink: #1c2a32;
+  --sd-muted: #5f707a;
+  --sd-sea: #6f8f8a;
+  --sd-sea-deep: #3f5c5a;
+  --sd-mist: #d7e0e4;
+  --sd-linen: #f1ebe2;
+  --sd-oat: #e4d9c8;
+  --sd-foam: #f7f4ef;
+  --sd-line: rgba(28, 42, 50, 0.12);
+  position: relative;
+  overflow: clip;
+  color: var(--sd-ink);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(215, 224, 228, 0.9), transparent 30rem),
+    radial-gradient(circle at 90% 14%, rgba(111, 143, 138, 0.2), transparent 28rem),
+    linear-gradient(180deg, #f4f0e8 0%, #ebe4d8 42%, #e8eef0 100%);
+  font-family: Sora, "Segoe UI", sans-serif;
+}
+
+.saltdrift__haze {
+  position: fixed;
+  inset: auto -12% -18% auto;
+  z-index: 0;
+  width: min(58vw, 560px);
+  height: min(58vw, 560px);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(111, 143, 138, 0.28), transparent 70%);
+  filter: blur(10px);
+  animation: saltdrift-drift 16s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+.saltdrift__nav,
+.saltdrift__hero,
+.saltdrift__section,
+.saltdrift__footer {
+  position: relative;
+  z-index: 1;
+}
+
+.saltdrift__nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 4;
+  padding: 16px clamp(18px, 4vw, 56px);
+  border-bottom: 1px solid var(--sd-line);
+  background: rgba(247, 244, 239, 0.82);
+  backdrop-filter: blur(16px);
+}
+
+.saltdrift__hub,
+.saltdrift__nav-links a,
+.saltdrift__text-link,
+.saltdrift__footer a {
+  color: var(--sd-sea-deep);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.saltdrift__hub,
+.saltdrift__nav-links a,
+.saltdrift__text-link,
+.saltdrift__footer a,
+.saltdrift__button {
+  transition: color 180ms ease, background-color 180ms ease, transform 180ms ease;
+}
+
+.saltdrift__hub:hover,
+.saltdrift__nav-links a:hover,
+.saltdrift__text-link:hover,
+.saltdrift__footer a:hover {
+  color: var(--sd-ink);
+}
+
+.saltdrift__brand-mark {
+  color: var(--sd-ink);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.saltdrift__nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.saltdrift__hero {
+  position: relative;
+  min-height: min(100vh, 920px);
+  display: grid;
+  align-items: end;
+  overflow: hidden;
+}
+
+.saltdrift__hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: saltdrift-ken 20s ease-in-out infinite alternate;
+}
+
+.saltdrift__hero-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(28, 42, 50, 0.18) 0%, rgba(28, 42, 50, 0.52) 72%, rgba(28, 42, 50, 0.72) 100%);
+}
+
+.saltdrift__hero-content {
+  position: relative;
+  z-index: 1;
+  width: min(720px, calc(100% - 48px));
+  margin: 0 auto 12vh;
+  padding: 0 clamp(18px, 4vw, 24px);
+  color: var(--sd-foam);
+  animation: saltdrift-rise 1000ms ease both;
+}
+
+.saltdrift__brand {
+  margin: 0 0 14px;
+  font-family: Fraunces, Georgia, serif;
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.05;
+}
+
+.saltdrift__hero h1 {
+  margin: 0 0 16px;
+  max-width: 14ch;
+  font-family: Sora, "Segoe UI", sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 500;
+  line-height: 1.25;
+}
+
+.saltdrift__hero-blurb {
+  margin: 0 0 28px;
+  max-width: 38ch;
+  color: rgba(247, 244, 239, 0.88);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.saltdrift__hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+
+.saltdrift__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border: 1px solid transparent;
+  background: var(--sd-sea);
+  color: var(--sd-foam);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.saltdrift__button:hover {
+  background: var(--sd-sea-deep);
+  transform: translateY(-1px);
+}
+
+.saltdrift__text-link {
+  color: rgba(247, 244, 239, 0.92);
+  text-underline-offset: 0.22em;
+}
+
+.saltdrift__text-link:hover {
+  color: var(--sd-foam);
+}
+
+.saltdrift__section {
+  padding: clamp(64px, 10vw, 112px) clamp(18px, 4vw, 56px);
+}
+
+.saltdrift__eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+  color: var(--sd-sea-deep);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.saltdrift__section h2,
+.saltdrift__room-copy h3,
+.saltdrift__ritual h3 {
+  margin: 0;
+  font-family: Fraunces, Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+}
+
+.saltdrift__section h2 {
+  max-width: 16ch;
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+.saltdrift__section-heading,
+.saltdrift__spa-copy,
+.saltdrift__coast-copy,
+.saltdrift__visit-copy {
+  max-width: 620px;
+}
+
+.saltdrift__section-heading p,
+.saltdrift__spa-copy > p,
+.saltdrift__coast-copy p,
+.saltdrift__visit-copy > p,
+.saltdrift__room-copy p,
+.saltdrift__ritual p {
+  margin: 14px 0 0;
+  color: var(--sd-muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.saltdrift__stay {
+  background:
+    linear-gradient(180deg, rgba(241, 235, 226, 0.55), rgba(247, 244, 239, 0.9));
+}
+
+.saltdrift__room-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.4fr);
+  gap: clamp(24px, 4vw, 48px);
+  margin-top: clamp(32px, 5vw, 48px);
+  align-items: start;
+}
+
+.saltdrift__room-tabs {
+  display: grid;
+  gap: 10px;
+}
+
+.saltdrift__room-tab {
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  padding: 16px 18px;
+  border: 1px solid transparent;
+  border-left: 3px solid transparent;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.saltdrift__room-tab span {
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.saltdrift__room-tab small {
+  color: var(--sd-muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.saltdrift__room-tab:hover {
+  background: rgba(215, 224, 228, 0.35);
+}
+
+.saltdrift__room-tab--active {
+  border-left-color: var(--sd-sea);
+  background: rgba(215, 224, 228, 0.45);
+}
+
+.saltdrift__room-feature {
+  display: grid;
+  gap: 18px;
+}
+
+.saltdrift__room-media,
+.saltdrift__spa-media,
+.saltdrift__coast-media {
+  overflow: hidden;
+  margin: 0;
+}
+
+.saltdrift__room-media img,
+.saltdrift__spa-media img,
+.saltdrift__coast-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 700ms ease;
+}
+
+.saltdrift__room-media {
+  aspect-ratio: 4 / 3;
+}
+
+.saltdrift__room-media:hover img,
+.saltdrift__spa-media:hover img,
+.saltdrift__coast-media:hover img {
+  transform: scale(1.03);
+}
+
+.saltdrift__room-copy h3 {
+  font-size: 1.55rem;
+}
+
+.saltdrift__spa,
+.saltdrift__coast {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.saltdrift__spa {
+  background:
+    radial-gradient(circle at 80% 20%, rgba(215, 224, 228, 0.7), transparent 24rem),
+    linear-gradient(180deg, #e8eef0 0%, #f1ebe2 100%);
+}
+
+.saltdrift__spa-media,
+.saltdrift__coast-media {
+  aspect-ratio: 4 / 5;
+  max-height: 640px;
+}
+
+.saltdrift__ritual-list {
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--sd-line);
+}
+
+.saltdrift__ritual {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--sd-line);
+}
+
+.saltdrift__ritual h3 {
+  font-size: 1.25rem;
+}
+
+.saltdrift__ritual > span {
+  flex-shrink: 0;
+  color: var(--sd-sea-deep);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.saltdrift__coast {
+  background:
+    linear-gradient(180deg, rgba(241, 235, 226, 0.85), rgba(232, 238, 240, 0.9));
+}
+
+.saltdrift__visit {
+  display: grid;
+  place-items: start;
+  background:
+    radial-gradient(circle at 18% 30%, rgba(111, 143, 138, 0.16), transparent 22rem),
+    linear-gradient(180deg, #f7f4ef 0%, #e4d9c8 100%);
+}
+
+.saltdrift__address {
+  display: grid;
+  gap: 6px;
+  margin: 28px 0 28px;
+  font-style: normal;
+  color: var(--sd-ink);
+  line-height: 1.5;
+}
+
+.saltdrift__address a {
+  color: var(--sd-sea-deep);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.saltdrift__address a:hover {
+  color: var(--sd-ink);
+}
+
+.saltdrift__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+  padding: 28px clamp(18px, 4vw, 56px) 40px;
+  border-top: 1px solid var(--sd-line);
+  color: var(--sd-muted);
+  font-size: 0.92rem;
+}
+
+.saltdrift__footer strong {
+  color: var(--sd-ink);
+  font-family: Fraunces, Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+@keyframes saltdrift-drift {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translate3d(-28px, -36px, 0) scale(1.08);
+  }
+}
+
+@keyframes saltdrift-ken {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: scale(1.1) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+@keyframes saltdrift-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@media (max-width: 900px) {
+  .saltdrift__room-layout,
+  .saltdrift__spa,
+  .saltdrift__coast {
+    grid-template-columns: 1fr;
+  }
+
+  .saltdrift__spa-media,
+  .saltdrift__coast-media {
+    aspect-ratio: 16 / 11;
+    max-height: none;
+    order: -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .saltdrift__nav {
+    flex-wrap: wrap;
+  }
+
+  .saltdrift__nav-links {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .saltdrift__brand {
+    font-size: clamp(2.1rem, 10vw, 3rem);
+  }
+
+  .saltdrift__hero-content {
+    margin-bottom: 10vh;
+  }
+
+  .saltdrift__ritual {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .saltdrift__footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .saltdrift__haze,
+  .saltdrift__hero-image,
+  .saltdrift__hero-content,
+  .saltdrift__room-media img,
+  .saltdrift__spa-media img,
+  .saltdrift__coast-media img,
+  .saltdrift__button {
+    animation: none;
+    transition: none;
+  }
+}

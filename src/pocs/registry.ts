@@ -2,6 +2,7 @@ import type { ComponentType } from "react";
 import DesignerPortfolioDemo from "./designer-portfolio/Demo";
 import KpiDashboardDemo from "./kpi-dashboard/Demo";
 import PetitCrumbDemo from "./petit-crumb/Demo";
+import SaltdriftHouseDemo from "./saltdrift-house/Demo";
 import ServiceCatalogDemo from "./service-catalog/Demo";
 
 export type PocDefinition = {
@@ -14,6 +15,15 @@ export type PocDefinition = {
 };
 
 export const pocs: PocDefinition[] = [
+  {
+    slug: "saltdrift-house",
+    title: "Saltdrift House",
+    description:
+      "A coastal linen boutique hotel and spa landing page with rooms, rituals, and a quiet stay enquiry.",
+    tags: ["Hotel", "Spa", "Coastal", "Website"],
+    presentation: "immersive",
+    Demo: SaltdriftHouseDemo,
+  },
   {
     slug: "petit-crumb",
     title: "Petit Crumb Cafe",
@@ -52,7 +62,7 @@ export const pocs: PocDefinition[] = [
   },
 ];
 
-export const currentFocusSlug = "petit-crumb";
+export const currentFocusSlug = "saltdrift-house";
 
 export const currentFocusPoc =
   pocs.find((poc) => poc.slug === currentFocusSlug) ?? pocs[0];
