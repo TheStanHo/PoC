@@ -67,3 +67,12 @@ src/
 - Do not commit secrets, credentials, `.env` files, real customer data, internal hostnames, private URLs, exported logs, private screenshots, or production incident details.
 
 When adding new work, keep it small, easy to understand, and beginner-friendly.
+
+## Cursor Cloud specific instructions
+
+This is a single static Vite + React + TypeScript site. Package manager is npm (`package-lock.json`); the update script runs `npm ci` on startup, so dependencies are already installed.
+
+- Run (dev): `npm run dev` starts Vite on `http://localhost:5173/`.
+- Build + type-check: `npm run build` runs `tsc --noEmit` then `vite build`. There is no separate lint script, so `tsc --noEmit` (via `npm run build`) is the type-check gate.
+- Tests: no test framework is configured; verify changes by running the dev server and exercising the affected PoC in the browser.
+- Routing is custom (no `react-router` dependency); PoC routes like `/pocs/<slug>` are handled in `src/App.tsx`.
