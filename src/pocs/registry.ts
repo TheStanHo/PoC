@@ -1,4 +1,5 @@
 import type { ComponentType } from "react";
+import ApiStudioDemo from "./api-studio/Demo";
 import DesignerPortfolioDemo from "./designer-portfolio/Demo";
 import KpiDashboardDemo from "./kpi-dashboard/Demo";
 import MonitorMeDemo from "./monitor-me/Demo";
@@ -16,6 +17,15 @@ export type PocDefinition = {
 };
 
 export const pocs: PocDefinition[] = [
+  {
+    slug: "api-studio",
+    title: "API Studio",
+    description:
+      "A Postman-style request lab with mock catalog APIs, headers, auth, response inspection, and copy-as-cURL.",
+    tags: ["API", "HTTP", "Developer", "Mock"],
+    presentation: "immersive",
+    Demo: ApiStudioDemo,
+  },
   {
     slug: "monitor-me",
     title: "Monitor-Me",
@@ -72,7 +82,7 @@ export const pocs: PocDefinition[] = [
   },
 ];
 
-export const currentFocusSlug = "monitor-me";
+export const currentFocusSlug = "api-studio";
 
 export const currentFocusPoc =
   pocs.find((poc) => poc.slug === currentFocusSlug) ?? pocs[0];
