@@ -20,8 +20,8 @@ export const pocs: PocDefinition[] = [
     slug: "monitor-me",
     title: "Monitor-Me",
     description:
-      "A researcher dashboard PoC inspired by the Android dissertation app that tracked phone unlocks and screen-on time.",
-    tags: ["Research", "Android", "Usage", "Dashboard"],
+      "An interactive phone mockup of the dissertation Android app, with study details and a clickable consent-to-finish flow.",
+    tags: ["Research", "Android", "Phone", "Study"],
     presentation: "immersive",
     Demo: MonitorMeDemo,
   },
