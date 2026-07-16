@@ -1,6 +1,7 @@
 import type { ComponentType } from "react";
 import DesignerPortfolioDemo from "./designer-portfolio/Demo";
 import KpiDashboardDemo from "./kpi-dashboard/Demo";
+import PetitCrumbDemo from "./petit-crumb/Demo";
 import ServiceCatalogDemo from "./service-catalog/Demo";
 
 export type PocDefinition = {
@@ -13,6 +14,15 @@ export type PocDefinition = {
 };
 
 export const pocs: PocDefinition[] = [
+  {
+    slug: "petit-crumb",
+    title: "Petit Crumb Cafe",
+    description:
+      "A soft, modern bakery cafe website with about, menu, and location for a fictional neighbourhood shop.",
+    tags: ["Cafe", "Bakery", "Website", "Menu"],
+    presentation: "immersive",
+    Demo: PetitCrumbDemo,
+  },
   {
     slug: "designer-portfolio",
     title: "Designer Portfolio",
@@ -42,7 +52,7 @@ export const pocs: PocDefinition[] = [
   },
 ];
 
-export const currentFocusSlug = "designer-portfolio";
+export const currentFocusSlug = "petit-crumb";
 
 export const currentFocusPoc =
   pocs.find((poc) => poc.slug === currentFocusSlug) ?? pocs[0];
