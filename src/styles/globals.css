@@ -3046,6 +3046,7 @@ button {
 }
 
 .saltdrift__section {
+  scroll-margin-top: 84px;
   padding: clamp(64px, 10vw, 112px) clamp(18px, 4vw, 56px);
 }
 
