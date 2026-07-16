@@ -180,9 +180,11 @@ export default function KpiDashboardDemo() {
     <div className="kpi-poc">
       <section className="kpi-hero">
         <div>
-          <a className="kpi-hub-link" href="/">
-            PoC hub
-          </a>
+          <nav className="kpi-poc-nav" aria-label="KPI dashboard navigation">
+            <a className="kpi-hub-link" href="/">
+              ← PoC hub
+            </a>
+          </nav>
           <span className="eyebrow">KPI Dashboard PoC</span>
           <h1>Reliability command centre</h1>
           <p>

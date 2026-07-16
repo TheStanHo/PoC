@@ -42,6 +42,7 @@ src/
 - For multi-page PoCs, use nested URLs under the PoC, such as `/pocs/kpi-dashboard/services`.
 - Let the global app route identify the PoC, then let the PoC handle its own internal sub-pages.
 - Each PoC should include a visible `PoC hub` link back to `/`, styled to fit that PoC's own design.
+- Prefer full-page PoC presentations that do not show the global hub header/chrome inside the demo route.
 - Choose each PoC's layout, theme, and interaction model based on that PoC's purpose first.
 - Do not force PoCs to match the homepage theme, styling, or layout.
 - Each PoC may have its own visual direction, theme, typography, spacing, and interaction model when that better fits the concept.

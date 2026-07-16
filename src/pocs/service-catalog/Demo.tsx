@@ -100,9 +100,11 @@ export default function ServiceCatalogDemo() {
     <div className="catalog-poc">
       <section className="catalog-hero">
         <div>
-          <a className="catalog-hub-link" href="/">
-            PoC hub
-          </a>
+          <nav className="catalog-poc-nav" aria-label="Service catalog navigation">
+            <a className="catalog-hub-link" href="/">
+              ← PoC hub
+            </a>
+          </nav>
           <span className="catalog-kicker">Service Catalog PoC</span>
           <h1>Search the service directory.</h1>
           <p>

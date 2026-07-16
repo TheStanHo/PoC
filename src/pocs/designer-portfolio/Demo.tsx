@@ -38,7 +38,7 @@ export default function DesignerPortfolioDemo() {
   return (
     <div className="designer-portfolio">
       <nav className="portfolio-nav" aria-label="Portfolio sections">
-        <a href="/">PoC hub</a>
+        <a href="/">← PoC hub</a>
         <strong>Maya Vale</strong>
         <span>Selected works 2025-2026</span>
       </nav>

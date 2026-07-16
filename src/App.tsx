@@ -55,7 +55,7 @@ export default function App() {
   let content = <Home onNavigate={navigate} />;
 
   if (activePoc) {
-    content = <PocPage poc={activePoc} onNavigate={navigate} />;
+    content = <PocPage poc={activePoc} />;
   } else if (currentPath !== "/") {
     content = (
       <section className="hero">

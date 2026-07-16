@@ -28,6 +28,7 @@ export const pocs: PocDefinition[] = [
     description:
       "A searchable service ownership catalog with mock teams, health, runbooks, dashboards, and dependencies.",
     tags: ["Catalog", "Ownership", "Runbooks", "Services"],
+    presentation: "immersive",
     Demo: ServiceCatalogDemo,
   },
   {
@@ -36,6 +37,7 @@ export const pocs: PocDefinition[] = [
     description:
       "A platform and service reliability dashboard with weekly and monthly SLO, availability, and incident KPIs.",
     tags: ["KPIs", "SLOs", "Availability", "Platform"],
+    presentation: "immersive",
     Demo: KpiDashboardDemo,
   },
 ];
